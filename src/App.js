@@ -9,6 +9,7 @@ class App extends React.Component {
             result: ""
         }
         this.handleButtonClick = this.handleButtonClick.bind(this);
+        this.deleteButtonClick = this.deleteButtonClick.bind(this);
     }
 
     handleButtonClick(e) {
@@ -17,15 +18,20 @@ class App extends React.Component {
         });
     }
 
+    deleteButtonClick() {
+        this.setState ({
+            result: ""
+        })
+    }
+
     render() {
         return (
             <div className="calculator">
                 <div className="result">
                     <p>{this.state.result}</p>
                 </div>
-                <span className="clear grey">AC</span>
-                <span data-value={'+/-'} onClick={this.handleButtonClick} className="sign1 grey"><a
-                    className="sign"><sup>+</sup>/<sub>-</sub></a></span>
+                <span onClick={this.deleteButtonClick} className="clear grey">AC</span>
+                <span data-value={'+/-'} onClick={this.handleButtonClick} className="grey">+/-</span>
                 <span data-value={'%'} onClick={this.handleButtonClick} className="grey">%</span>
                 <span data-value={'÷'} onClick={this.handleButtonClick} className="operator">÷</span>
 
@@ -45,7 +51,7 @@ class App extends React.Component {
                 <span data-value={'+'} onClick={this.handleButtonClick} className="operator">+</span>
 
                 <span data-value={0} onClick={this.handleButtonClick} className="double">0</span>
-                <span data-value={'.'} onClick={this.handleButtonClick}>.</span>
+                <span>.</span>
                 <span data-value={'='} onClick={this.handleButtonClick} classNameName="operator">=</span>
 
             </div>
