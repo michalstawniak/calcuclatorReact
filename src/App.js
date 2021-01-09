@@ -1,61 +1,59 @@
 import './App.css';
-import React from 'react'
+import React, {useState} from 'react'
 
-class App extends React.Component {
+function App() {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            result: ""
-        }
-        this.handleButtonClick = this.handleButtonClick.bind(this);
-        this.deleteButtonClick = this.deleteButtonClick.bind(this);
-    }
+    const [state, update] = useState("")
 
-    handleButtonClick(e) {
-        this.setState({
-            result: this.state.result + e.target.dataset.value
-        });
-    }
-
-    deleteButtonClick() {
-        this.setState ({
-            result: ""
-        })
-    }
-
-    render() {
+    function Number(props) {
         return (
-            <div className="calculator">
-                <div className="result">
-                    <p>{this.state.result}</p>
-                </div>
-                <span onClick={this.deleteButtonClick} className="clear grey">AC</span>
-                <span data-value={'+/-'} onClick={this.handleButtonClick} className="grey">+/-</span>
-                <span data-value={'%'} onClick={this.handleButtonClick} className="grey">%</span>
-                <span data-value={'÷'} onClick={this.handleButtonClick} className="operator">÷</span>
-
-                <span data-value={7} onClick={this.handleButtonClick}>7</span>
-                <span data-value={8} onClick={this.handleButtonClick}>8</span>
-                <span data-value={9} onClick={this.handleButtonClick}>9</span>
-                <span data-value={'X'} onClick={this.handleButtonClick} className="operator">x</span>
-
-                <span data-value={4} onClick={this.handleButtonClick}>4</span>
-                <span data-value={5} onClick={this.handleButtonClick}>5</span>
-                <span data-value={6} onClick={this.handleButtonClick}>6</span>
-                <span data-value={'-'} onClick={this.handleButtonClick} className="operator">-</span>
-
-                <span data-value={1} onClick={this.handleButtonClick}>1</span>
-                <span data-value={2} onClick={this.handleButtonClick}>2</span>
-                <span data-value={3} onClick={this.handleButtonClick}>3</span>
-                <span data-value={'+'} onClick={this.handleButtonClick} className="operator">+</span>
-
-                <span data-value={0} onClick={this.handleButtonClick} className="double">0</span>
-                <span>.</span>
-                <span data-value={'='} onClick={this.handleButtonClick} classNameName="operator">=</span>
-
-            </div>
+            <span data-value={props.value} onClick={handleButtonClick}>{props.value}</span>
         )
-    };
+    }
+
+    function handleButtonClick(e) {
+        console.log(e.target.dataset.value);
+        let temp = state + e.target.dataset.value;
+        update(temp);
+    }
+
+    function deleteButtonClick() {
+        let temp = "";
+        update(temp);
+    }
+
+    return (
+        <div className="calculator">
+            <div className="result">
+                <p>{state}</p>
+            </div>
+
+            <span onClick={deleteButtonClick} className="clear grey">AC</span>
+            <span data-value={'+/-'} onClick={handleButtonClick} className="grey">+/-</span>
+            <span data-value={'%'} onClick={handleButtonClick} className="grey">%</span>
+            <span data-value={'÷'} onClick={handleButtonClick} className="operator">÷</span>
+
+            <Number value="7" />
+            <Number value="8" />
+            <Number value="9" />
+            <span data-value={'X'} onClick={handleButtonClick} className="operator">x</span>
+
+            <Number value="4" />
+            <Number value="5" />
+            <Number value="6" />
+            <span data-value={'-'} onClick={handleButtonClick} className="operator">-</span>
+
+            <Number value="1" />
+            <Number value="2" />
+            <Number value="3" />
+            <span data-value={'+'} onClick={handleButtonClick} className="operator">+</span>
+
+            <span data-value={0} onClick={handleButtonClick} className="double">0</span>
+            <span data-value={'.'} onClick={handleButtonClick}>.</span>
+            <span data-value={'='} onClick={handleButtonClick} classNameName="operator">=</span>
+
+        </div>
+    );
 }
+
 export default App;
