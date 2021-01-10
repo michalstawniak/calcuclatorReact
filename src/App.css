@@ -86,19 +86,6 @@ span {
     font-weight: 500;
 }
 
-button {
-    text-align: center;
-    cursor: pointer;
-    width: 9vh;
-    height: 9vh;
-    margin: 1vh;
-    background-color: #333333;
-    line-height: 9vh;
-    border-radius: 9vh;
-    color: white;
-    font-weight: 500;
-}
-
 .operator {
     background-color: #FF9F09;
     color: white;
@@ -131,4 +118,18 @@ button {
 
 .sign1 {
     position: relative;
+}
+.numbers {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    float: left;
+    width: 75%;
+}
+.operators {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    float: right;
+    width: 25%;
 }
